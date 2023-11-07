@@ -63,7 +63,7 @@ sc.make.design.matrix <- function(scmpObject,
   ord <- c(c(1, ncol(com.cell.meta)), c(2:c(ncol(com.cell.meta) - 1)))
 
   # Reorder columns
-  com.cell.meta <- com.cell.meta[, ord]
+  com.cell.meta <- as.matrix(com.cell.meta[, ord])
 
   # Run Original MaSigPro make.matrix.design
   edesignList <- make.design.matrix(com.cell.meta,
@@ -75,9 +75,9 @@ sc.make.design.matrix <- function(scmpObject,
 
   # Create Object
   edesignObj <- new("edesignClass",
-    dis = edesignList$dis,
+    dis = as.matrix(edesignList$dis),
     groups.vector = edesignList$groups.vector,
-    edesign = edesignList$edesign,
+    edesign = as.matrix(edesignList$edesign),
     poly_degree = as.integer(poly_degree)
   )
 

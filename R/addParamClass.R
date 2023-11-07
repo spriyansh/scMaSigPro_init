@@ -4,7 +4,6 @@
 #' @slot path_prefix A character representing the prefix for path labeling.
 #' @slot root_label A character representing the label for the root of the tree.
 #' @slot pseudotime_colname A character representing the name of the column for pseudotime values.
-#' @slot binning A character representing the binning method.
 #' @slot bin_method A character representing the algorithm used for binning.
 #' @slot path_colname A character representing the name of the column for path values.
 #' @slot bin_colname A character representing the name of the column for bin values.
@@ -15,6 +14,7 @@
 #' @slot g Integer. Number of genes taken in the regression fit.
 #' @slot MT.adjust Pvalue correction
 #' @slot epsilon convergence tolerance
+#' @slot step.method A character specifying the imputed step method for stepwise regression.
 #'
 #' @name addParamClass
 #' @aliases addParamClass-class
@@ -30,7 +30,7 @@ setClass(
     path_prefix = "character",
     root_label = "character",
     pseudotime_colname = "character",
-    binning = "character",
+    step.method = "character",
     bin_method = "character",
     path_colname = "character",
     bin_colname = "character",
@@ -48,9 +48,9 @@ setClass(
     # Check if any character slots are empty or not of type character
     char_slots <- c(
       "bin_pseudotime_colname", "path_prefix", "root_label",
-      "pseudotime_colname", "binning", "bin_method",
+      "pseudotime_colname", "bin_method",
       "path_colname", "bin_colname", "bin_size_colname",
-      "bin_members_colname", "MT.adjust"
+      "bin_members_colname", "MT.adjust", "step.method"
     )
 
     for (slot_name in char_slots) {
@@ -95,7 +95,6 @@ setClass(
     path_prefix = "Path",
     root_label = "root",
     pseudotime_colname = "Pseudotime",
-    binning = "universal",
     path_colname = "Path",
     bin_method = "Sturges",
     bin_colname = "scmp_bin",
@@ -105,6 +104,7 @@ setClass(
     bin_size_colname = "scmp_bin_size",
     bin_members_colname = "scmp_bin_members",
     MT.adjust = "BH",
+    step.method = "backward",
     epsilon = 0.00001
   )
 )

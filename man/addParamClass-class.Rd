@@ -19,8 +19,6 @@ Class "addParamClass"
 
 \item{\code{pseudotime_colname}}{A character representing the name of the column for pseudotime values.}
 
-\item{\code{binning}}{A character representing the binning method.}
-
 \item{\code{bin_method}}{A character representing the algorithm used for binning.}
 
 \item{\code{path_colname}}{A character representing the name of the column for path values.}
@@ -40,6 +38,8 @@ Class "addParamClass"
 \item{\code{MT.adjust}}{Pvalue correction}
 
 \item{\code{epsilon}}{convergence tolerance}
+
+\item{\code{step.method}}{A character specifying the imputed step method for stepwise regression.}
 }}
 
 \keyword{classes}
