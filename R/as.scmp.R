@@ -1,7 +1,7 @@
 #' @title Convert 'Cell Dataset' or 'SingleCellExperiment' object to scmpClass
 #'
 #' @description
-#' `as_scmp()` converts a cds/CellDataSet object from Monocle3 or a SingleCellExperiment
+#' `as.scmp()` converts a cds/CellDataSet object from Monocle3 or a SingleCellExperiment
 #' object from Slingshot to an instance of the scmpClass object.
 #'
 #' @param object An S4 object of class `cds/CellDataSet` or `SingleCellExperiment`.
@@ -40,7 +40,7 @@
 #'
 #' # Step-2: Convert to ScMaSigPro Object
 #' # Here, we convert the SCE object to an scMaSigPro object
-#' scmp.sce <- as_scmp(
+#' scmp.sce <- as.scmp(
 #'   object = splat.sim, from = "sce",
 #'   align_pseudotime = TRUE,
 #'   verbose = FALSE,
@@ -57,7 +57,7 @@
 #' @author Priyansh Srivastava \email{spriyansh29@@gmail.com}
 #'
 #' @export
-as_scmp <- function(object, from = "cds",
+as.scmp <- function(object, from = "cds",
                     path_prefix = "Path",
                     root_label = "root",
                     pseudotime_colname = "Pseudotime",
@@ -155,15 +155,6 @@ as_scmp <- function(object, from = "cds",
       additional_params[["reduction_method"]] <- "umap"
     }
 
-    # Annotate the monocel3 Object
-    # annotated_cds <- annotate_monocle3_cds(object,
-    #   reduction_method = additional_params[["reduction_method"]],
-    #   path_prefix = path_prefix,
-    #   root_label = root_label,
-    #   path_colname = path_colname,
-    #   pseudotime_colname = pseudotime_colname,
-    #   verbose = verbose
-    # )
     if (interactive) {
       scmpObj <- selectPath.m3(
         cdsObj = object,

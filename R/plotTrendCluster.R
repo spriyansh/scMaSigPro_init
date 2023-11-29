@@ -16,7 +16,7 @@
 #' @return Generates a plot.
 #' @export
 
-sc.PlotProfiles <-
+plotTrendCluster <-
   function(scmpObj,
            xlab = "Pooled Pseudotime",
            ylab = "Pseudobulk Expression",
@@ -34,7 +34,7 @@ sc.PlotProfiles <-
     trend.data.list <- lapply(sig_genes, function(gene_i, group_by = groupBy, sigGeneList = sig_gene_list,
                                                   clusterList = cluster_list) {
       # Create the plot
-      plt <- sc.PlotGroups(
+      plt <- plotTrend(
         scmpObj = scmpObj,
         feature_id = gene_i,
         smoothness = smoothness,
@@ -52,7 +52,6 @@ sc.PlotProfiles <-
         clusterList <- clusterList[["sigCounts"]]
         clusterLabel <- clusterList[[gene_i]]
         trend.data[["scmpCluster"]] <- paste("cluster", clusterLabel)
-        print(clusterLabel)
       } else if (group_by == "coeff") {
         trend.data <- plt$layers[[3]][["data"]]
         trend.data[["feature"]] <- gene_i
